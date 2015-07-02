@@ -1,7 +1,7 @@
 
 local _M = {}
 
-_M.AppBase  = import(".AppBase")
-_M.ViewBase = import(".ViewBase")
+_M.BaseApp  = import(".BaseApp")
+_M.BaseScene  = import(".BaseScene")
 
 return _M

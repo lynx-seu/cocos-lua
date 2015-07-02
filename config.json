@@ -1,10 +1,10 @@
 {
     "init_cfg":{
-       "isLandscape": false,
+       "isLandscape": true,
        "isWindowTop": false,
        "name": "demo",
-       "width": 480,
-       "height": 320,
+       "width": 800,
+       "height": 480,
        "entry": "src/main.lua",
        "consolePort": 6050,
        "uploadPort": 6060

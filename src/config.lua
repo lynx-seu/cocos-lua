@@ -13,8 +13,8 @@ CC_DISABLE_GLOBAL = true
 
 -- for module display
 CC_DESIGN_RESOLUTION = {
-    width = 640,
-    height = 960,
+    width = 800,
+    height = 480,
     autoscale = "FIXED_HEIGHT",
     callback = function(framesize)
         local ratio = framesize.width / framesize.height
@@ -33,5 +33,9 @@ GAME_SFX = {
     levelCompleted = "sfx/LevelWinSound.mp3",
 }
 
-GAME_TEXTURE_DATA_FILENAME  = "AllSprites.plist"
-GAME_TEXTURE_IMAGE_FILENAME = "AllSprites.png"
+GAME_TEXTURE = {
+    {"animation.plist", "animation.png"},
+    {"background.plist", "background.png"},
+    {"ele.plist", "ele.png"},
+    {"picturematch.plist", "picturematch.png"},
+}
