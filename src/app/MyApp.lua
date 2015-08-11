@@ -32,4 +32,8 @@ function MyApp:enterChooseLevelScene()
     self:enterScene("ChooseLevelScene", nil, "fade", 0.6, display.COLOR_WHITE)
 end
 
+function MyApp:enterPlayScene()
+    self:enterScene("PlayScene", nil, "fade", 0.6, display.COLOR_WHITE)
+end
+
 return MyApp

@@ -41,11 +41,16 @@
     <Folder Include="src\cocos\spine\" />
     <Folder Include="src\cocos\ui\" />
     <Folder Include="src\packages\" />
+    <Folder Include="src\packages\container\" />
     <Folder Include="src\packages\mvc\" />
+    <Folder Include="src\packages\algorithm\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\app\MyApp.lua" />
+    <Compile Include="src\app\scenes\ChooseLevelScene.lua" />
+    <Compile Include="src\app\scenes\LoadScene.lua" />
     <Compile Include="src\app\scenes\MainScene.lua" />
+    <Compile Include="src\app\scenes\PlayScene.lua" />
     <Compile Include="src\app\views\BubbleButton.lua" />
     <Compile Include="src\cocos\3d\3dConstants.lua" />
     <Compile Include="src\cocos\cocos2d\bitExtend.lua" />
@@ -107,10 +112,18 @@
     <Compile Include="src\cocos\ui\experimentalUIConstants.lua" />
     <Compile Include="src\cocos\ui\GuiConstants.lua" />
     <Compile Include="src\config.lua" />
+    <Compile Include="src\helpfunc.lua" />
+    <Compile Include="src\logic.lua" />
     <Compile Include="src\main.lua" />
-    <Compile Include="src\packages\mvc\AppBase.lua" />
+    <Compile Include="src\packages\algorithm\bfs.lua" />
+    <Compile Include="src\packages\algorithm\init.lua" />
+    <Compile Include="src\packages\container\deque.lua" />
+    <Compile Include="src\packages\container\init.lua" />
+    <Compile Include="src\packages\container\list.lua" />
+    <Compile Include="src\packages\mvc\BaseApp.lua" />
+    <Compile Include="src\packages\mvc\BaseLayer.lua" />
+    <Compile Include="src\packages\mvc\BaseScene.lua" />
     <Compile Include="src\packages\mvc\init.lua" />
-    <Compile Include="src\packages\mvc\ViewBase.lua" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

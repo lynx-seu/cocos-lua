@@ -1,51 +1,22 @@
 
---local MainScene = class("MainScene", function ()
---    return display.newScene("MainScene")
---end)
-
 local MainScene = class("MainScene", cc.load("mvc").BaseScene)
 
-function MainScene:ctor()
-    dump(self, "main scene")
+function MainScene:init()
     -- add background image
-    display.newSprite("background-hd.jpg"):move(display.center):addTo(self)
-    -- 其他背景元素
-    local cloud = display.newSprite("#background_cloud_1-hd.png")
-    cloud:move(display.cx, 485):addTo(self)
-
-    local sea = display.newSprite("#beach_adornment-hd.png")
-    local size = sea:getContentSize()
-    sea:move(display.cx, size.height/2):addTo(self)
+    self:AddBg()
 
     self:initBoat()
     self:initSeagull()
 
     -- button
-    local btn = ccui.Button:create("btn_play.png", nil, nil, ccui.TextureResType.plistType)
-    btn:setAnchorPoint(cc.p(0.5, 0.5))
+    local btn = self:AddBtn("btn_play.png", nil, nil, handler(self, self.OnPlay))
     btn:setScale(0.6)
-    local size = cc.Director:getInstance():getVisibleSize()
-    btn:setPosition(cc.p(size.width/2, 180))
-    self:addChild(btn)
-    -- 设置enable状态
-    --btn:setTouchEnabled(false)
-    -- 取消button动画, 必须设置按下图片
---    btn:setPressedActionEnabled(false)
-    btn:addTouchEventListener(handler(self, self.OnBtnClicked))
-
-    -- 监听返回键
-    local keyListener = cc.EventListenerKeyboard:create()
-    keyListener:registerScriptHandler(handler(self, self.OnClose), cc.Handler.EVENT_KEYBOARD_PRESSED)
-    local eventDispatch = self:getEventDispatcher()
-    eventDispatch:addEventListenerWithSceneGraphPriority(keyListener, self)
+    btn:setPosition(display.cx, 180)
 end
 
-function MainScene:OnBtnClicked(ref, type)
-    if type == ccui.TouchEventType.began then
-        dump(ref, "touch began")
-    elseif type == ccui.TouchEventType.ended then
-        dump(app, "touch ended")
-        app:enterChooseLevelScene()
+function MainScene:OnPlay(ref, type)
+    if type == ccui.TouchEventType.ended then
+        app:enterPlayScene()
     end
 end
 
@@ -55,7 +26,7 @@ function MainScene:initSeagull()
     local ani = cc.RepeatForever:create(cc.Animate:create(seagullAni))
     seagull:addTo(self)
     local size = seagull:getContentSize()
-    seagull:setPosition(100, 443)
+    seagull:setPosition(150, 540)
     seagull:runAction(ani)
 end
 
@@ -66,7 +37,7 @@ function MainScene:initBoat()
     local ani = cc.RepeatForever:create(cc.Animate:create(boatAni))
     boat:addTo(self)
     local size = boat:getContentSize()
-    boat:setPosition(display.width+size.width/2, 360)
+    boat:setPosition(display.width+size.width/2, 480)
     boat:runAction(ani)
     local moveTo = cc.MoveTo:create(10, cc.p(0-size.width/2, 360))
     local place = cc.Place:create(cc.p(display.width+size.width/2, 360))
@@ -76,9 +47,7 @@ function MainScene:initBoat()
 end
 
 function MainScene:OnClose(keycode)
-    if "KEY_ESCAPE" == cc.KeyCodeKey[keycode+1] then
-        print("escape")
-    end
+    print("escape")
 end
 
 function MainScene:UnpackPlist(plist, png)
